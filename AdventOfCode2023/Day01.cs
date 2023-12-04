@@ -10,11 +10,11 @@ internal class Day01
 
         var lines = input.Split("\r\n");
 
-        Part1(lines);
-        Part2(lines);
+        Console.WriteLine($"Part 1: {Part1(lines)}");
+        Console.WriteLine($"Part 2: {Part2(lines)}");
     }
 
-    public static void Part1(string[] lines)
+    public static int Part1(string[] lines)
     {
         var total = lines
             .Select(line => new
@@ -25,10 +25,10 @@ internal class Day01
             .Select(digits => int.Parse($"{digits.first}{digits.last}"))
             .Sum();
 
-        Console.WriteLine(total);
+        return total;
     }
 
-    public static void Part2(string[] lines)
+    public static int Part2(string[] lines)
     {
         var regex = new Regex("(?=(?<digit>\\d|one|two|three|four|five|six|seven|eight|nine))");
 
@@ -42,7 +42,7 @@ internal class Day01
             .Select(t => ConvertToInt(t.firstDigit) * 10 + ConvertToInt(t.lastDigit))
             .Sum();
 
-        Console.WriteLine(total);
+        return total;
     }
 
     private static int ConvertToInt(string number)

@@ -8,11 +8,11 @@ internal class Day03
 
         var lines = input.Split("\r\n");
 
-        Part1(lines);
-        Part2(lines);
+        Console.WriteLine($"Part 1: {Part1(lines)}");
+        Console.WriteLine($"Part 2: {Part2(lines)}");
     }
 
-    public static void Part1(string[] lines)
+    public static int Part1(string[] lines)
     {
         var total = lines.Select(line => line.Split(":"))
             .Select(gameIdSets => new
@@ -24,7 +24,7 @@ internal class Day03
             .Select(idToSets => idToSets.id)
             .Sum();
 
-        Console.WriteLine(total);
+        return total;
     }
 
     private static bool GameIsPossible(IEnumerable<string> sets)
@@ -50,7 +50,7 @@ internal class Day03
         return true;
     }
 
-    public static void Part2(string[] lines)
+    public static int Part2(string[] lines)
     {
         var total = 0;
 
@@ -82,6 +82,6 @@ internal class Day03
             total += minimumCubeSet["blue"] * minimumCubeSet["red"] * minimumCubeSet["green"];
         }
 
-        Console.WriteLine(total);
+        return total;
     }
 }

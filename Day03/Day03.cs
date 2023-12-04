@@ -4,10 +4,10 @@ internal class Day03
 {
     internal record Point(int X, int Y);
 
-    private static readonly Point[] Delta = {
-        new(1, 0),  new(1, 1),  new(1, -1),
-        new(0, 1),              new(0, -1),
-        new(-1, 1), new(-1, 0), new(-1, -1),
+    private static readonly Point[] Directions = {
+        new(-1, -1), new(-1, 0), new(-1, 1),
+        new(0, -1),              new(0, 1),
+        new(1, -1),  new(1, 0),  new(1, 1),
     };
 
     private static void Main()
@@ -16,8 +16,8 @@ internal class Day03
 
         var lines = input.Split("\r\n");
 
-        Console.WriteLine(Part1(lines));
-        Console.WriteLine(Part2(lines));
+        Console.WriteLine($"Part 1: {Part1(lines)}");
+        Console.WriteLine($"Part 2: {Part2(lines)}");
     }
 
     public static string Part1(string[] lines)
@@ -38,7 +38,7 @@ internal class Day03
 
                     if (!foundAdjacentSymbol)
                     {
-                        foundAdjacentSymbol = Delta
+                        foundAdjacentSymbol = Directions
                             .Select(d => new Point(d.X + x, d.Y + y))
                             .Where(p => IsInBounds(lines, p))
                             .Select(p => lines[p.Y][p.X])
@@ -83,7 +83,7 @@ internal class Day03
                 {
                     number += c;
 
-                    var adjacentAsterisks = Delta
+                    var adjacentAsterisks = Directions
                         .Select(d => new Point(d.X + x, d.Y + y))
                         .Where(p => IsInBounds(lines, p) && lines[p.Y][p.X] == '*')
                         .ToArray();
