@@ -19,14 +19,15 @@ internal class Day04
 		return sorted.Select((hand, i) => (i + 1) * int.Parse(hand[1])).Sum();
 	}
 
-	private static void PrintSortedHands(string[][] sorted)
+	private enum HandType
 	{
-		Console.WriteLine();
-		foreach (var strings in sorted)
-		{
-			Console.WriteLine(strings[0] + " " + strings[1] + " " + GetHandType(strings[0], true));
-		}
-		Console.WriteLine();
+		HighCard = 1,
+		OnePair = 2,
+		TwoPair = 3,
+		ThreeOfAKind = 4,
+		FullHouse = 5,
+		FourOfAKind = 6,
+		FiveOfAKind = 7
 	}
 
 	private class Part1HandComparer(bool part2) : IComparer<string>
@@ -74,7 +75,7 @@ internal class Day04
 		}
 	}
 
-	public static HandType GetHandType(string cards, bool part2 = false)
+	private static HandType GetHandType(string cards, bool part2 = false)
 	{
 		var cardCount = cards
 			.GroupBy(c => c)
@@ -109,15 +110,13 @@ internal class Day04
 		return type;
 	}
 
-	public enum HandType
+	private static void PrintSortedHands(string[][] sorted)
 	{
-		None = 0,
-		HighCard = 1,
-		OnePair = 2,
-		TwoPair = 3,
-		ThreeOfAKind = 4,
-		FullHouse = 5,
-		FourOfAKind = 6,
-		FiveOfAKind = 7
-	} 
+		Console.WriteLine();
+		foreach (var strings in sorted)
+		{
+			Console.WriteLine(strings[0] + " " + strings[1] + " " + GetHandType(strings[0], true));
+		}
+		Console.WriteLine();
+	}
 }
