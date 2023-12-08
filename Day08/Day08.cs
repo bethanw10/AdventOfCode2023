@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-
-namespace Day08;
+﻿namespace Day08;
 
 internal class Day04
 {
@@ -32,6 +30,17 @@ internal class Day04
 		return GetTotalSteps("AAA", instructions, nodes);
 	}
 
+	private static long Part2(string instructions, Dictionary<string, Node> nodes)
+	{
+		var currentNodes = nodes.Keys.Where(n => n.Last() == 'A').ToList();
+
+		var totalSteps = currentNodes
+			.Select(c => GetTotalSteps(c, instructions, nodes))
+			.Select(t => (long)t);
+
+		return totalSteps.Aggregate(LCM);
+	}
+
 	private static int GetTotalSteps(string startNode, string instructions, Dictionary<string, Node> nodes)
 	{
 		var currentNode = startNode;
@@ -56,17 +65,6 @@ internal class Day04
 		}
 
 		return totalSteps;
-	}
-
-	private static long Part2(string instructions, Dictionary<string, Node> nodes)
-	{
-		var currentNodes = nodes.Keys.Where(n => n.Last() == 'A').ToList();
-
-		var totalSteps = currentNodes
-			.Select(c => GetTotalSteps(c, instructions, nodes))
-			.Select(t => (long)t);
-
-		return totalSteps.Aggregate(LCM);
 	}
 
 	private static long GCF(long a, long b)
