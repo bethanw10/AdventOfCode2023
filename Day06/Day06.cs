@@ -20,7 +20,7 @@ internal class Day04
 			.Select(long.Parse)
 			.Skip(1).ToArray();
 
-		Console.WriteLine($"Part 1: {Part1(times, distances)}");
+		Console.WriteLine($"Part 1: {Part1And2(times, distances)}");
 
 		var time = long.Parse(lines[0]
 			.Replace("Time:", "")
@@ -30,10 +30,10 @@ internal class Day04
 			.Replace("Distance:", "")
 			.Replace(" ", ""));
 
-		Console.WriteLine($"Part 2: {Part1([time], [distance])}");
+		Console.WriteLine($"Part 2: {Part1And2([time], [distance])}");
 	}
 
-	private static double Part1(long[] times, long[] distances)
+	private static double Part1And2(long[] times, long[] distances)
 	{
 		var total = 1;
 
