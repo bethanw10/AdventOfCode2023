@@ -1,6 +1,6 @@
 ﻿namespace Day02;
 
-internal class Day03
+internal class Day02
 {
     private static void Main()
     {

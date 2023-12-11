@@ -30,7 +30,7 @@ internal class Day04
 			.Replace("Distance:", "")
 			.Replace(" ", ""));
 
-		Console.WriteLine($"Part 2: {Part1And2([time], [distance])}");
+		Console.WriteLine($"Part 2: {Part1And2(new [] { time }, new[] { distance })}");
 	}
 
 	private static double Part1And2(long[] times, long[] distances)

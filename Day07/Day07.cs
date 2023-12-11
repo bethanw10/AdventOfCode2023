@@ -33,9 +33,9 @@ internal class Day04
 	private class Part1HandComparer(bool part2) : IComparer<string>
 	{
 		private readonly List<char> _cardTypes =
-		[
-			'2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'
-		];
+            new() {
+			    '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'
+		    };
 
 		public int Compare(string handA, string handB)
 		{
