@@ -2,7 +2,7 @@
 
 namespace Day06;
 
-internal class Day04
+internal class Day06
 {
 	private static void Main()
 	{

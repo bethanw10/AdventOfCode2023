@@ -4,8 +4,7 @@ namespace Day05;
 
 internal class Day05
 {
-
-	public record AlmanacMap(long DestinationStart, long SourceStart, long Range)
+    private record AlmanacMap(long DestinationStart, long SourceStart, long Range)
 	{
 		public long SourceEnd => SourceStart + Range - 1;
 		public long DestinationEnd => DestinationStart + Range - 1;
